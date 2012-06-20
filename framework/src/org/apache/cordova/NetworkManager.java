@@ -40,6 +40,8 @@ public class NetworkManager extends Plugin {
 
     public static final String WIFI = "wifi";
     public static final String WIMAX = "wimax";
+    public static final String ETHERNET = "eth";
+
     // mobile
     public static final String MOBILE = "mobile";
     // 2G network types
@@ -211,32 +213,34 @@ public class NetworkManager extends Plugin {
      */
     private String getType(NetworkInfo info) {
         if (info != null) {
-            String type = info.getTypeName();
-
-            if (type.toLowerCase().equals(WIFI)) {
+            String type = info.getTypeName().toLowerCase();
+            if (type.equals(WIFI)) {
                 return TYPE_WIFI;
             }
-            else if (type.toLowerCase().equals(MOBILE)) {
+            else if (type.equals(MOBILE)) {
                 type = info.getSubtypeName();
-                if (type.toLowerCase().equals(GSM) ||
-                        type.toLowerCase().equals(GPRS) ||
-                        type.toLowerCase().equals(EDGE)) {
+                if (type.equals(GSM) ||
+                        type.equals(GPRS) ||
+                        type.equals(EDGE)) {
                     return TYPE_2G;
                 }
-                else if (type.toLowerCase().startsWith(CDMA) ||
-                        type.toLowerCase().equals(UMTS)  ||
-                        type.toLowerCase().equals(ONEXRTT) ||
-                        type.toLowerCase().equals(EHRPD) ||
-                        type.toLowerCase().equals(HSUPA) ||
-                        type.toLowerCase().equals(HSDPA) ||
-                        type.toLowerCase().equals(HSPA)) {
+                else if (type.startsWith(CDMA) ||
+                        type.equals(UMTS)  ||
+                        type.equals(ONEXRTT) ||
+                        type.equals(EHRPD) ||
+                        type.equals(HSUPA) ||
+                        type.equals(HSDPA) ||
+                        type.equals(HSPA)) {
                     return TYPE_3G;
                 }
-                else if (type.toLowerCase().equals(LTE) ||
-                        type.toLowerCase().equals(UMB) ||
-                        type.toLowerCase().equals(HSPA_PLUS)) {
+                else if (type.equals(LTE) ||
+                        type.equals(UMB) ||
+                        type.equals(HSPA_PLUS)) {
                     return TYPE_4G;
                 }
+            }
+            else if (type.equals(ETHERNET)) {
+                return TYPE_ETHERNET;
             }
         }
         else {

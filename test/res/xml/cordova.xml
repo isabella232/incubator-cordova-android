@@ -30,6 +30,8 @@
 	<!-- <access origin=".*"/> Allow all domains, suggested development use only -->
 
     <log level="DEBUG"/>
+    <access origin="force.com" subdomains="true" />
+    <access origin="salesforce.com" subdomains="true" />
     <preference name="classicRender" value="true" />
 </cordova>
 

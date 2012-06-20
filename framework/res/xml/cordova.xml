@@ -29,6 +29,8 @@
     <!-- <access origin="https://example.com" subdomains="true" /> such as above, but including subdomains, such as www -->
     <!-- <access origin=".*"/> Allow all domains, suggested development use only -->
 
+    <access origin="force.com" subdomains="true" />
+    <access origin="salesforce.com" subdomains="true" />
     <log level="DEBUG"/>
     <preference name="classicRender" value="true" />
 </cordova>

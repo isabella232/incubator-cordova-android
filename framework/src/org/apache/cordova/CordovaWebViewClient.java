@@ -39,7 +39,7 @@ import android.webkit.WebViewClient;
 public class CordovaWebViewClient extends WebViewClient {
 
     private static final String TAG = "Cordova";
-    DroidGap ctx;
+    protected DroidGap ctx;
     private boolean doClearHistory = false;
 
     /**

@@ -372,8 +372,8 @@ public class DroidGap extends Activity implements CordovaInterface {
                 ViewGroup.LayoutParams.FILL_PARENT,
                 1.0F));
 
-           this.appView.setWebChromeClient(webChromeClient);
-           this.setWebViewClient(this.appView, webViewClient);
+           this.appView.setWebChromeClient(this.createWebChromeClient());
+           this.setWebViewClient(this.appView, this.createWebViewClient());
 
         this.appView.setInitialScale(0);
         this.appView.setVerticalScrollBarEnabled(false);
@@ -409,6 +409,25 @@ public class DroidGap extends Activity implements CordovaInterface {
 
         // Create plugin manager
         this.pluginManager = new PluginManager(this.appView, this);
+    }
+
+    /**
+     * Factory method for generating a new WebViewClient.
+     * Subclasses may override.
+     */
+    protected CordovaWebViewClient createWebViewClient() {
+    	CordovaWebViewClient result = new CordovaWebViewClient(this);
+    	return result;
+    }
+
+    /**
+     * Factory method to generate a new WebChromeClient
+     * Subclasses may override
+     * @return CordovaChromeClient or subclass
+     */
+    protected CordovaChromeClient createWebChromeClient() {
+    	CordovaChromeClient result = new CordovaChromeClient(this);
+    	return result;
     }
 
     /**
