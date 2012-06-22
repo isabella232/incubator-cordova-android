@@ -17,4 +17,5 @@ example
 tmp
 *.tmp
 test/libs/*.jar
+test/bin
 bin/node_modules
